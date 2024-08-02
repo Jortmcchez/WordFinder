@@ -51,4 +51,4 @@ def checkValid(word, dictionary):
 # a test print
 print(findword("oiitakf", "in", 4, 5))
 
-#test4
+#test5
