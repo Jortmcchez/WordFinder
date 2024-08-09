@@ -41,7 +41,9 @@ def findword(letters, boardLetter, spaceLeft, spaceRight):
 def checkRight(row, col):
     right_limit = 0
     col = col + 1
-    while col < 15:
+    if col == 14:
+        return 0
+    while col < 14:
         if arr[row][col] != " ":
             break
         else:
@@ -51,6 +53,8 @@ def checkRight(row, col):
 def checkLeft(row, col):
     left_limit = 0
     col = col - 1
+    if col == 0:
+        return 0
     while col > 0:
         if arr[row][col] != " ":
             break
@@ -61,7 +65,6 @@ def checkLeft(row, col):
 
 rows, cols = (15, 15)
 arr = [[" " for i in range(cols)] for j in range(rows)]
-arr[0][3] = "$"
 arr[6][5] = "t"
 arr[7][5] = "a"
 arr[8][5] = "i"
@@ -85,14 +88,17 @@ for row in arr:
     col_counter = -1
     for item in row:
         col_counter = col_counter + 1
-        if item != " " and item != "$":
+        if item != " ":
             right = checkRight(row_counter, col_counter)
             left = checkLeft(row_counter, col_counter)
 
             #print(right)
             #print(item)
             #print(letters)
-            print(findword(letters, item, left, right))
+            if right > 0 and left > 0:
+                print("[" + str(col_counter) + "][" + str(row_counter) + "]")
+                print(findword(letters, item, left, right))
+                print(" ")
 
 
 
