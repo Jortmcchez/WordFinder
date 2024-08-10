@@ -43,7 +43,7 @@ def checkRight(row, col):
     col = col + 1
     if col == 14:
         return 0
-    while col < 14:
+    while col <= 14:
         if arr[row][col] != " ":
             break
         else:
@@ -55,13 +55,37 @@ def checkLeft(row, col):
     col = col - 1
     if col == 0:
         return 0
-    while col > 0:
+    while col >= 0:
         if arr[row][col] != " ":
             break
         else:
             col = col + 1
             left_limit = left_limit + 1
     return left_limit
+def checkAbove(row, col):
+    upper_limit = 0
+    row = row - 1
+    if row == 0:
+        return 0
+    while row >= 0:
+        if arr[row][col] != " ":
+            break
+        else:
+            row = row - 1
+            upper_limit = upper_limit + 1
+    return upper_limit
+def checkBelow(row, col):
+    lower_limit = 0
+    row = row + 1
+    if row == 14:
+        return 0
+    while row <= 14:
+        if arr[row][col] != " ":
+            break
+        else:
+            row = row + 1
+            lower_limit = lower_limit + 1
+    return lower_limit
 
 rows, cols = (15, 15)
 arr = [[" " for i in range(cols)] for j in range(rows)]
@@ -91,13 +115,21 @@ for row in arr:
         if item != " ":
             right = checkRight(row_counter, col_counter)
             left = checkLeft(row_counter, col_counter)
+            up = checkAbove(row_counter, col_counter)
+            below = checkBelow(row_counter, col_counter)
+
+            #print(checkBelow(row_counter, col_counter))
 
             #print(right)
-            #print(item)
+            print(item)
             #print(letters)
             if right > 0 and left > 0:
                 print("[" + str(col_counter) + "][" + str(row_counter) + "]")
                 print(findword(letters, item, left, right))
+                print(" ")
+            if up > 0 and below > 0:
+                print("[" + str(col_counter) + "][" + str(row_counter) + "]")
+                print(findword(letters, item, up, below))
                 print(" ")
 
 
