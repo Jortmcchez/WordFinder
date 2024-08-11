@@ -67,7 +67,7 @@ def checkAbove(row, col):
     row = row - 1
     if row == 0:
         return 0
-    while row >= 0:
+    while row > 0:
         if arr[row][col] != " ":
             break
         else:
@@ -100,9 +100,29 @@ arr[7][5] = "a"
 arr[7][6] = "y"
 arr[7][7] = "e"
 arr[7][8] = "d"
-letters = "ivclohe"
-#for row in arr:
-    #print(row)
+arr[0][3] = "f"
+arr[0][4] = "r"
+arr[0][5] = "a"
+arr[0][6] = "t"
+arr[0][8] = "m"
+arr[0][9] = "a"
+arr[0][10] = "d"
+arr[0][11] = "l"
+arr[0][12] = "y"
+arr[1][5] = "r"
+arr[1][6] = "e"
+arr[1][7] = "v"
+arr[1][8] = "e"
+arr[1][9] = "t"
+arr[2][7] = "e"
+arr[3][7] = "h"
+arr[4][7] = "i"
+arr[5][7] = "c"
+arr[6][7] = "l"
+letters = "oaanhws"
+
+for row in arr:
+    print(row)
 
 row_counter = -1
 col_counter = -1
@@ -121,16 +141,17 @@ for row in arr:
             #print(checkBelow(row_counter, col_counter))
 
             #print(right)
-            print(item)
             #print(letters)
-            if right > 0 and left > 0:
+            if right > 0 or left > 0:
+                print(item)
                 print("[" + str(col_counter) + "][" + str(row_counter) + "]")
                 print(findword(letters, item, left, right))
                 print(" ")
-            if up > 0 and below > 0:
+            if up > 0 or below > 0:
+                print(item)
                 print("[" + str(col_counter) + "][" + str(row_counter) + "]")
                 print(findword(letters, item, up, below))
-                print(" ")
+                print(" ") 
 
 
 
